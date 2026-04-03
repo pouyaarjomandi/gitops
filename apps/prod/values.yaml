@@ -15,6 +15,7 @@ ingress:
   annotations: {}
 
 env:
+  APP_ENV: "production"
   FLASK_DEBUG: "0"
   GUNICORN_WORKERS: "4"
 
