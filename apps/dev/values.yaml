@@ -17,6 +17,7 @@ ingress:
 env:
   FLASK_DEBUG: "1"
   GUNICORN_WORKERS: "2"
+  APP_ENV: "development"
 
 resources:
   requests:
