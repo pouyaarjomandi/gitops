@@ -5,13 +5,16 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    repoURL: https://github.com/pouyaarjomandi/gitops.git
-    targetRevision: main
-    path: charts/flask-demo
-    helm:
-      valueFiles:
-        - ../../apps/dev/values.yaml
+  sources:
+    - repoURL: https://github.com/pouyaarjomandi/gitops.git
+      targetRevision: main
+      path: charts/flask-demo
+      helm:
+        valueFiles:
+          - $values/apps/dev/values.yaml
+    - repoURL: https://github.com/pouyaarjomandi/gitops.git
+      targetRevision: main
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
