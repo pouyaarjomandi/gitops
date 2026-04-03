@@ -12,6 +12,7 @@ service:
 ingress:
   enabled: true
   host: flask-demo.prod.local
+  annotations: {}
 
 env:
   FLASK_DEBUG: "0"
@@ -24,3 +25,19 @@ resources:
   limits:
     cpu: 500m
     memory: 512Mi
+
+hpa:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60
+
+livenessProbe:
+  path: /health
+  initialDelaySeconds: 10
+  periodSeconds: 15
+
+readinessProbe:
+  path: /ready
+  initialDelaySeconds: 5
+  periodSeconds: 10
