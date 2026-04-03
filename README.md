@@ -63,4 +63,4 @@ ArgoCD · Helm · Kubernetes · Docker · Nexus · Jenkins
 
 ## Author
 
-**Pouya Arjmandiakram** — [GitHub](https://github.com/pouyaarjomandi)
+**Pouya Arjmandiakram** — [GitHub](https://github.com/pouyaarjomandi) · [LinkedIn](https://www.linkedin.com/in/pouya-arjomandi/)
