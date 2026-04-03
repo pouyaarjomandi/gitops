@@ -1,0 +1,26 @@
+replicaCount: 2
+
+image:
+  repository: nexus:8083/demo/flask-demo
+  tag: staging-1
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 5000
+
+ingress:
+  enabled: true
+  host: flask-demo.staging.local
+
+env:
+  FLASK_DEBUG: "0"
+  GUNICORN_WORKERS: "3"
+
+resources:
+  requests:
+    cpu: 150m
+    memory: 192Mi
+  limits:
+    cpu: 350m
+    memory: 384Mi
