@@ -1,0 +1,9 @@
+apiVersion: v2
+name: flask-demo
+description: A Helm chart for Flask Demo E-Commerce API
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+  - name: pouya arjmandi
+    email: arjomandipouya1051@gmail.com
