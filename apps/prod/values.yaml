@@ -2,7 +2,7 @@ replicaCount: 3
 
 image:
   repository: nexus:8083/demo/flask-demo
-  tag: main-5
+  tag: main-6
   pullPolicy: Always
 
 service:
