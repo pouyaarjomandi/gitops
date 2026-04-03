@@ -1,10 +1,10 @@
 # GitOps Repository
 
-Kubernetes deployment manifests and Helm charts for the [flask-demo](https://github.com/pouyaarjomandi/devops-cicd-pipeline1) application, managed via **ArgoCD**.
+Kubernetes deployment manifests and Helm charts for the [flask-demo](https://github.com/pouyaarjomandi/devops-cicd-pipeline) application, managed via **ArgoCD**.
 
 ## How It Works
 
-1. A commit to `develop`/`staging`/`main` in the [CI repo](https://github.com/pouyaarjomandi/devops-cicd-pipeline1) triggers Jenkins.
+1. A commit to `develop`/`staging`/`main` in the [CI repo](https://github.com/pouyaarjomandi/devops-cicd-pipeline) triggers Jenkins.
 2. Jenkins builds & pushes the Docker image to Nexus, then updates `image.tag` in the corresponding `apps/<env>/values.yaml`.
 3. ArgoCD detects the change and automatically syncs the Kubernetes deployment.
 
