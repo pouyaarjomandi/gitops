@@ -4,7 +4,9 @@ image:
   repository: nexus:8083/demo/flask-demo
   tag: main-7
   pullPolicy: Always
-
+imagePullSecrets:
+  - name: nexus-registry-secret
+  
 service:
   type: ClusterIP
   port: 5000
