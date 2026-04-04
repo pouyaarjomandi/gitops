@@ -18,6 +18,10 @@ spec:
         app: flask-demo
         env: {{ .Release.Name }}
     spec:
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml .Values.imagePullSecrets | nindent 8 }}
+      {{- end }}
       containers:
         - name: flask-demo
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -48,7 +52,6 @@ spec:
             limits:
               cpu: {{ .Values.resources.limits.cpu }}
               memory: {{ .Values.resources.limits.memory }}
-
 ---
 apiVersion: v1
 kind: Service
@@ -67,7 +70,6 @@ spec:
     - port: {{ .Values.service.port }}
       targetPort: {{ .Values.service.port }}
       protocol: TCP
-
 ---
 {{- if .Values.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
@@ -95,7 +97,6 @@ spec:
                 port:
                   number: {{ .Values.service.port }}
 {{- end }}
-
 ---
 {{- if .Values.hpa.enabled }}
 apiVersion: autoscaling/v2
