@@ -5,6 +5,9 @@ image:
   tag: staging-1
   pullPolicy: Always
 
+imagePullSecrets:
+  - name: nexus-registry-secret
+
 service:
   type: ClusterIP
   port: 5000
