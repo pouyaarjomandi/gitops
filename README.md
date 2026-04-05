@@ -15,9 +15,12 @@ gitops/
 ├── charts/
 │   └── flask-demo/
 │       ├── Chart.yaml              # Helm chart metadata
-│       ├── values.yaml             # Default values
+│       ├── values.yaml             # Default values (includes imagePullSecrets: [])
 │       └── templates/
-│           └── all.yaml            # Deployment, Service, Ingress, HPA
+│           ├── deployment.yaml     # Deployment with imagePullSecrets support
+│           ├── service.yaml        # ClusterIP Service
+│           ├── ingress.yaml        # Ingress with ingressClassName: nginx
+│           └── hpa.yaml            # HorizontalPodAutoscaler (conditional)
 ├── apps/
 │   ├── dev/
 │   │   └── values.yaml             # Development environment overrides
@@ -40,13 +43,13 @@ gitops/
 |--------|------------|-------------|-----------|--------------|
 | `develop` | Dev | `apps/dev/values.yaml` | `dev` | `flask-demo.dev.local` |
 | `staging` | Staging | `apps/staging/values.yaml` | `staging` | `flask-demo.staging.local` |
-| `main` | Production | `apps/prod/values.yaml` | `prod` | `flask-demo.local` |
+| `main` | Production | `apps/prod/values.yaml` | `prod` | `flask-demo.prod.local` |
 
 ## Helm Chart Resources
 
-- **Deployment** — Flask app container with liveness/readiness probes and resource limits
+- **Deployment** — Flask app container with liveness/readiness probes, resource limits, and optional `imagePullSecrets` 
 - **Service** — ClusterIP on port 5000
-- **Ingress** — Host-based routing (conditionally enabled)
+- **Ingress** — Host-based routing with `ingressClassName: nginx` (conditionally enabled)
 - **HPA** — Horizontal Pod Autoscaler (conditionally enabled)
 
 ## Setup ArgoCD Applications
